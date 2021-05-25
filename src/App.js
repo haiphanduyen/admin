@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "antd/dist/antd.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-function App() {
+import Sidebar from "./component/sidebar/sidebar";
+import Layout from "antd/lib/layout/layout";
+import Header from './component/header/header';
+
+
+import Dsxe from "./main/DSxe";
+import Dskhachhang from "./main/Dskhachhang";
+import AddVehicle from "./main/AddVehicle";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+      <Header/>
+      <br/>
+      <Sidebar />
+        <Switch>
+          <Layout className="site-layout" style={{ marginLeft: 200 }}>
+      <classname style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+        <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
+          <Route exact path="/DSXe">
+            <Dsxe/>
+          </Route>
+          <Route exact path="/Dskhachhang">
+            <Dskhachhang/>
+          </Route>
+          <Route exact path="/AddVehicle">
+            <AddVehicle/>
+          </Route>
+         
+        </div>
+      </classname>
+    </Layout> 
+        </Switch>
+
+      </Router>
     </div>
   );
 }
-
-export default App;
